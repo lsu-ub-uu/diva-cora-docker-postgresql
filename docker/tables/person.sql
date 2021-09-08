@@ -4,8 +4,8 @@
 --
 
 CREATE TABLE public.person (
-	id serial NOT NULL PRIMARY KEY,
-	info json NOT NULL
+	id character varying(255) NOT NULL PRIMARY KEY,
+	data json NOT NULL
 );
 
 

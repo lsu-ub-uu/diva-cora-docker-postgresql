@@ -3,8 +3,10 @@ FROM cora-docker-postgresql:9.6
 USER root
 
 RUN mkdir data
+COPY tables/* tables/
 COPY data/* data/
 COPY initdb/*.sh docker-entrypoint-initdb.d/
+RUN chmod +rx docker-entrypoint-initdb.d/*.sh && chown -R postgres: tables
 RUN chmod +rx docker-entrypoint-initdb.d/*.sh && chown -R postgres: data
 
 USER postgres

@@ -1,14 +1,22 @@
 #!/bin/bash
 set -e
 
-
-#TABLES="organisation organisation_name organisation_address organisation_contact organisation_parent organisation_predecessor organisation_predecessor_description organisation_type organisation_type_name"
 TABLES="person"
 
 for TABLE in $TABLES
 do
-    if [ ! -f /data/$TABLE.imported ]; then
-        psql -v ON_ERROR_STOP=1 -U diva diva < /data/$TABLE.sql > /data/$TABLE.log
-        touch /data/$TABLE.imported
+    if [ ! -f /tables/$TABLE.imported ]; then
+        psql -v ON_ERROR_STOP=1 -U diva diva < /tables/$TABLE.sql > /tables/$TABLE.log
+        touch /tables/$TABLE.imported
+    fi
+done
+
+DATA="authority-person"
+
+for DATA in $DATA
+do
+    if [ ! -f /data/$DATA.imported ]; then
+        psql -v ON_ERROR_STOP=1 -U diva diva < /data/$DATA.sql > /data/$DATA.log
+        touch /data/$DATA.imported
     fi
 done
