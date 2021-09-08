@@ -5,7 +5,7 @@
 
 CREATE TABLE public.person (
 	id character varying(255) NOT NULL PRIMARY KEY,
-	data json NOT NULL
+	record jsonb NOT NULL
 );
 
 
