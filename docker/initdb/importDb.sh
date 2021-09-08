@@ -1,22 +1,25 @@
 #!/bin/bash
 set -e
 
-TABLES="person"
+echo "Creating tables"
+TABLE_DIR="sql/tables"
 
-for TABLE in $TABLES
+for TABLE in "$TABLE_DIR"/*
 do
-    if [ ! -f /tables/$TABLE.imported ]; then
-        psql -v ON_ERROR_STOP=1 -U diva diva < /tables/$TABLE.sql > /tables/$TABLE.log
-        touch /tables/$TABLE.imported
-    fi
+  echo "$TABLE"
+  psql -v ON_ERROR_STOP=1 -U diva diva < $TABLE > $TABLE.log
 done
 
-DATA="authority-person"
+echo "Loading data"
+DATA_DIR="/sql/data"
 
-for DATA in $DATA
+for DATA in "$DATA_DIR"/*
 do
-    if [ ! -f /data/$DATA.imported ]; then
-        psql -v ON_ERROR_STOP=1 -U diva diva < /data/$DATA.sql > /data/$DATA.log
-        touch /data/$DATA.imported
-    fi
+  echo "$DATA"
+  psql -v ON_ERROR_STOP=1 -U diva diva < $DATA > $DATA.log
 done
+
+
+
+
+
