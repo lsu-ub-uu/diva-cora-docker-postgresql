@@ -1,4 +1,5 @@
-FROM cora-docker-postgresql:2.0-SNAPSHOT
+ARG CORA_DOCKER_VERSION
+FROM cora-docker-postgresql:${CORA_DOCKER_VERSION}
 
 USER root
 
