@@ -1,12 +1,7 @@
-
---
--- Name: country; Type: TABLE; Schema: public; Owner: diva
---
-
-CREATE TABLE public.personDomainPart (
+CREATE TABLE record_personDomainPart (
 	id character varying(255) NOT NULL PRIMARY KEY,
 	record jsonb NOT NULL
 );
 
 
-ALTER TABLE personDomainPart OWNER TO diva;
+ALTER TABLE record_personDomainPart OWNER TO diva;
